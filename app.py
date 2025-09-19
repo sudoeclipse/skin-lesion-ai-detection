@@ -139,5 +139,5 @@ with footer_cols[0]:
     st.write("AI-powered skin lesion classification system for early detection and improved healthcare outcomes.")
 with footer_cols[1]:
     st.markdown("<h4>Our Team</h4>", unsafe_allow_html=True)
-    st.write("Kartik Patel")
+    st.write("Samruddhi Amol Shah")
     st.write("*Second Year at VIT Chennai*")
