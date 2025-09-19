@@ -4,7 +4,6 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model # pyright: ignore[reportMissingImports]
 
-# --- Page Configuration ---
 st.set_page_config(
     page_title="Lesion Detection",
     page_icon="🔬",
@@ -12,8 +11,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- Hardcoded Dark Mode CSS ---
-# Base CSS for layout and elements
+
 BASE_CSS = """
     .main .block-container {
         padding-top: 2rem;
@@ -42,11 +40,11 @@ DARK_THEME_CSS = """
     .footer a:hover { color: #FFFFFF; }
 """
 
-# Inject the combined CSS
+
 st.markdown(f"<style>{BASE_CSS}{DARK_THEME_CSS}</style>", unsafe_allow_html=True)
 
 
-# --- Configuration & Model Loading ---
+
 MODEL_PATH = 'skin_lesion_classifier.h5'
 IMG_HEIGHT = 75
 IMG_WIDTH = 100
@@ -73,7 +71,6 @@ def load_sk_model(path):
 
 model = load_sk_model(MODEL_PATH)
 
-# --- Prediction Logic ---
 def predict(image: Image.Image):
     """ Preprocesses the image and returns the prediction. """
     img_array = np.array(image)
@@ -86,12 +83,10 @@ def predict(image: Image.Image):
     class_name, description = LESION_CLASSES_INFO[class_index]
     return class_name, description, confidence_score
 
-# --- UI Layout ---
 
-# REMOVED: Header no longer needs columns or the toggle
 st.markdown('<div class="logo">Lesion Detection</div>', unsafe_allow_html=True)
 
-# Hero Section
+
 st.markdown('<h1 class="center-text">Skin Lesion Classifier</h1>', unsafe_allow_html=True)
 st.markdown('<p class="center-text">Upload an image of a skin lesion to get AI-based classification with expert-backed information.</p>', unsafe_allow_html=True)
 st.write("")
@@ -130,7 +125,7 @@ with col2:
     else:
         st.info("Upload an image and click 'Predict' to see results.")
 
-# Footer
+
 st.markdown('<div style="margin-top: 5rem;"></div>', unsafe_allow_html=True)
 st.divider()
 footer_cols = st.columns(2)
